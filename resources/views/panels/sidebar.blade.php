@@ -31,7 +31,7 @@
         <li class="menu-item {{ (request()->is('home')) ? 'active' : '' }}">
             <a href="{{ route('home') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-smart-home"></i>
-                <div data-i18n="Home">Home</div>
+                <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
         @endcan

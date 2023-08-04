@@ -21,7 +21,7 @@ class PermissionController extends Controller
         abort_if(Gate::denies('permissions.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $permissions = Permission::all();
-        return view('pages.permissions.index', compact('permissions'));
+        return view('pages.users-management.permissions.index', compact('permissions'));
     }
 
     /**
@@ -33,7 +33,7 @@ class PermissionController extends Controller
     {
         abort_if(Gate::denies('permissions.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        return view('pages.permissions.create');
+        return view('pages.users-management.permissions.create');
     }
 
     /**
@@ -63,7 +63,7 @@ class PermissionController extends Controller
     {
         abort_if(Gate::denies('permissions.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        return view('pages.permissions.edit', compact('permission'));
+        return view('pages.users-management.permissions.edit', compact('permission'));
     }
 
     /**

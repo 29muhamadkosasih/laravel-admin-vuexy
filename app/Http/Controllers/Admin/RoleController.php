@@ -24,7 +24,7 @@ class RoleController extends Controller
 
         $roles = Role::with('permissions')->get();
 
-        return view('pages.roles.index', compact('roles'));
+        return view('pages.users-management.roles.index', compact('roles'));
     }
 
     /**
@@ -37,7 +37,7 @@ class RoleController extends Controller
         abort_if(Gate::denies('roles.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $permissions = Permission::all()->pluck('name', 'id');
 
-        return view('pages.roles.create', compact('permissions'));
+        return view('pages.users-management.roles.create', compact('permissions'));
     }
 
     /**
@@ -52,20 +52,20 @@ class RoleController extends Controller
         $role->permissions()->sync($request->permissions);
 
         return redirect()->route('roles.index')->with('success', 'Success ! Data Roles Berhasil di Tambahkan');
+
+
+        /**
+         * Display the specified resource.
+         *
+         * @param  \App\Models\Role  $permission
+         * @return \Illuminate\Http\Response
+         */
     }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Role  $permission
-     * @return \Illuminate\Http\Response
-     */
     public function show(Role $role)
     {
         abort_if(Gate::denies('roles.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
-        return view('pages.roles.show', compact('role'));
+        return view('pages.users-management.roles.show', compact('role'));
     }
 
 
@@ -80,7 +80,7 @@ class RoleController extends Controller
         abort_if(Gate::denies('roles.edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
         $permissions = Permission::all()->pluck('name', 'id');
 
-        return view('pages.roles.edit', compact('role', 'permissions'));
+        return view('pages.users-management.roles.edit', compact('role', 'permissions'));
     }
 
     /**

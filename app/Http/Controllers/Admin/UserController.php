@@ -22,7 +22,7 @@ class UserController extends Controller
         abort_if(Gate::denies('users.index'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $users = User::with('role')->get();
-        return view('pages.users.index', compact('users'));
+        return view('pages.users-management.users.index', compact('users'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UserController extends Controller
         abort_if(Gate::denies('users.create'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $roles = Role::pluck('title', 'id');
-        return view('pages.users.create', [
+        return view('pages.users-management.users.create', [
             'roles'   => $roles
         ]);
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
         abort_if(Gate::denies('users.show'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         $data = User::find($id);
-        return view('pages.users.show', compact('data'));
+        return view('pages.users-management.users.show', compact('data'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $roles = Role::pluck('title', 'id');
-        return view('pages.users.edit', compact(
+        return view('pages.users-management.users.edit', compact(
             'user',
             'roles'
 
